@@ -1,0 +1,55 @@
+{% extends 'base.html' %}
+{% block content %}
+<div class="shadow p-3 mb-5 bg-white rounded">
+  <h1 style="color:rgb(0, 102, 255)">Welcome to the Recommender System</h1>
+  <h3 style="color:rgb(0, 102, 255)">Select the Bio-Tech Company you like to get similer companies.</h3>
+</div>
+
+  <form action="{{url_for('recommend')}}">
+    
+    <select name="c_name" class="btn btn-block btn-large">
+            <option selected="selected">Choose one</option>
+            <option value="Acclinate Genetics">Acclinate Genetics</option>
+            <option value="Activ Surgical">Activ Surgical</option>
+            <option value="AIM Medical Robotics">AIM Medical Robotics</option>
+            <option value="AMChart">AMChart</option>
+            <option value="AngioInsight Inc">AngioInsight Inc</option>
+            <option value="AniCell Biotech">AniCell Biotech</option>
+            <option value="Appairy Medical">Appairy Medical</option>
+            <option value="ARIZ Precision Medicine">ARIZ Precision Medicine</option>
+            <option value="Articulate Labs">Articulate Labs</option>
+            <option value="Avitus Orthopaedics">Avitus Orthopaedics</option>
+            <option value="BabyliveAdvice">BabyliveAdvice</option>
+            <option value="Boinca Therapeutics">Boinca Therapeutics</option>
+            <option value="Bone Health Technologies">Bone Health Technologies</option>
+            <option value="Breath Diagnostics">Breath Diagnostics</option>
+            <option value="Brilliantly">Brilliantly</option>
+            <option value="CareSuites">CareSuites</option>
+            <option value="Cellular Preservation Technologies">Cellular Preservation Technologies</option>
+            <option value="Clear Protocol">Clear Protocol</option>
+            <option value="Colorado Therapeutics">Colorado Therapeutics</option>
+            <option value="Corline Systems">Corline Systems</option>
+            <option value="Corsair Innovations Inc">Corsair Innovations Inc</option>
+            <option value="Deep Sleep Boost Inc">Deep Sleep Boost Inc</option>
+            <option value="EhmetDx LLC">EhmetDx LLC</option>
+            <option value="EnamelPure">EnamelPure</option>
+            <option value="EndoPro Solutions">EndoPro Solutions</option>
+            <option value="Ensysce Biosciences">Ensysce Biosciences</option>
+            <option value="Family Care Path Inc">Family Care Path Inc</option>
+            <option value="Fan Health Network">Fan Health Network</option>
+            <option value="FitSense">FitSense</option>
+            <option value="Gravity Therapy">Gravity Therapy</option>
+            <option value="Healora DirectPay Healthcare">Healora DirectPay Healthcare</option>
+            <option value="Healthy Within">Healthy Within</option>
+            <option value="Hyperion Laboratories">Hyperion Laboratories</option>
+            <option value="I-Lu Technologies Inc (HOOP)">I-Lu Technologies Inc (HOOP)</option>
+            <option value="Immplacate Inc">Immplacate Inc</option>
+            <option value="Ionica Sciences Inc">Ionica Sciences Inc</option>
+            <option value="Livia Medicines">Livia Medicines</option>
+            <option value="Maculus Therapeutix">Maculus Therapeutix</option>
+            <option value="Maternity Partners LLC">Maternity Partners LLC</option>
+        </select>
+    <br>
+    <input type="submit" class="btn btn-info" value="Enter">
+  </form>
+{% endblock %}
