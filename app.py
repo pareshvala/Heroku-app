@@ -2,10 +2,6 @@ from flask import Flask, request, render_template
 import pandas as pd
 
 
-import nltk 
-import string
-import re
-
 from sklearn.feature_extraction.text import TfidfVectorizer
 from sklearn.metrics.pairwise import sigmoid_kernel
 
@@ -13,7 +9,6 @@ from sklearn.metrics.pairwise import sigmoid_kernel
 #     xl = pd.ExcelFile('data_for_content_based - Ext.xlsx')
 #     df = xl.parse('Sheet1')
     
-#     df = df.drop(columns=['Year', 'Ratings', 'No. of Employees', 'Industry'])
 #     rslt_df = df[df['Name'] == c_name].Overview.to_string()
 
 #     return rslt_df
@@ -21,55 +16,7 @@ from sklearn.metrics.pairwise import sigmoid_kernel
 
 def give_rec(title):
     
-    xl = pd.ExcelFile('data_for_content_based - Ext.xlsx')
-    df = xl.parse('Sheet1')
-    
-    
-    df = df.drop(columns=['Year', 'Ratings', 'No. of Employees', 'Industry'])
-    
-    
-    # Remove punctuations
-    def remove_punct(text):   
-        text  = "".join([char for char in text if char not in string.punctuation])
-        text = re.sub('[0-9]+', '', text)
-        return text
-    
-    df['Txt_punct'] = df['Overview'].apply(lambda x: remove_punct(x))
-    df.head(10)
-    
-    
-    # Tokenization
-    def tokenization(text):
-        text = re.split('\W+', text)
-        return text
-    
-    df['Txt_tokenized'] = df['Txt_punct'].apply(lambda x: tokenization(x.lower()))
-    
-    
-    
-    # Remove stopwords
-    from nltk.corpus import stopwords
-    stop_words = stopwords.words('english')
-    
-    def remove_stopwords(text):
-        text = [word for word in text if word not in stop_words]
-        return text
-        
-    df['Txt_nonstop'] = df['Txt_tokenized'].apply(lambda x: remove_stopwords(x))
-    
-    
-    
-    ps = nltk.PorterStemmer()
-    def word_stemmer(text):
-        stem_text = " ".join([i for i in text])
-        return stem_text
-    
-    df['cleaned_overview'] = df['Txt_nonstop'].apply(lambda x: word_stemmer(x))
-    
-    
-    cleaned_df = df
-    cleaned_df['Overview'] = df['cleaned_overview']
-    cleaned_df.head(1)['Overview']
+    cleaned_df = pd.read_csv('cleaneddf.csv', index_col=0)
   
     tfv = TfidfVectorizer(min_df=3,  max_features=None, 
                 strip_accents='unicode', analyzer='word',token_pattern=r'\w{1,}',
