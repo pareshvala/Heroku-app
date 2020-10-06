@@ -63,7 +63,7 @@ def give_rec(title):
     # Top 10 most similar Companies
     # a = cleaned_df['Name'].iloc[company_indices] + ',       ' + cleaned_df['Location'].iloc[company_indices]
 
-    a = cleaned_df['Name'].iloc[company_indices]
+    a = cleaned_df['Name'].iloc[company_indices] + ',  ' + cleaned_df['Location'].iloc[company_indices]
     arr = a.tolist()
     return arr
 
